@@ -14,7 +14,8 @@ public class RotorTest {
 
     @Before
     public void before() {
-        rotor = new Rotor(1);
+        RotorInitializer initializer = new RotorInitializer();
+        rotor = initializer.getRotorMap(1);
     }
 
     @Test
@@ -23,9 +24,11 @@ public class RotorTest {
 
         String expectedString = "EKMFLGDQVZNTOWYHXUSPAIBRCJ".toLowerCase();
         char[] expectedChars = expectedString.toCharArray();
+        char currentLetter = 'a';
 
         for (int i = 0; i < map.size(); i++) {
-            assertThat(map.get(i).equals(expectedChars[i]), is(true));
+            assertThat(map.get(currentLetter).equals(expectedChars[i]), is(true));
+            currentLetter++;
         }
 
         map.forEach((key, value) -> System.out.println(key + " : " + value));

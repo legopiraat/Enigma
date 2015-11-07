@@ -2,25 +2,19 @@ package org.security;
 
 public class App {
     public static void main(String[] args) {
-        Enigma enigma = new Enigma(1, 2, 3);
+        RotorInitializer initializer = new RotorInitializer();
+        Enigma enigma = new Enigma();
 
-        char[] string = "heil hitler".toCharArray();
+        enigma.setRotors(
+                initializer.getRotorMap(1),
+                initializer.getRotorMap(2),
+                initializer.getRotorMap(3),
+                initializer.getRotorMap(901));
 
-        StringBuilder builder = new StringBuilder();
+        String encrypted = enigma.pressSentence("heil hitler");
+        String decrypted = enigma.pressSentence(encrypted);
 
-        for (char letter : string) {
-            builder.append(enigma.pressKey(letter));
-        }
-
-        System.out.println(builder.toString());
-        char[] output = builder.toString().toCharArray();
-
-        builder = new StringBuilder();
-
-        for (char reverseLetter : output) {
-            builder.append(enigma.pressKey(reverseLetter));
-        }
-
-        System.out.println(builder.toString());
+        System.out.println(encrypted);
+        System.out.println(decrypted);
     }
 }

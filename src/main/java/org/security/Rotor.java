@@ -1,6 +1,7 @@
 package org.security;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -8,31 +9,25 @@ import java.util.Optional;
 public class Rotor {
 
     @Getter
+    @Setter
     private HashMap<Character, Character> rotorMapping;
 
-    public Rotor(int settingId) {
-        rotorMapping = new HashMap<>();
+    @Getter
+    private char turningPoint;
 
-        RotorSettings rotorSettings = new RotorSettings();
-        String rotorString = rotorSettings.getRotorMap(settingId);
+    @Getter
+    @Setter
+    private int currentPosition;
 
-        mapRotorString(rotorString);
+    public Rotor(HashMap rotorMapping, char turningPoint) {
+        this.rotorMapping = rotorMapping;
+        this.turningPoint = turningPoint;
     }
-
-    private void mapRotorString(String rotorString) {
-        char[] splitted = rotorString.toCharArray();
-        char begin = 'a';
-
-        for (char split : splitted) {
-            rotorMapping.put(begin, split);
-            begin++;
-        }
-    }
-
 
     public char getKeyByValue(char value) {
         for (Character key : rotorMapping.keySet()) {
             if (rotorMapping.get(key).equals(value)) {
+                increment();
                 return key;
             }
         }
@@ -41,6 +36,11 @@ public class Rotor {
     }
 
     public char getValueByKey(char key) {
+        increment();
         return rotorMapping.get(key);
+    }
+
+    private void increment() {
+
     }
 }

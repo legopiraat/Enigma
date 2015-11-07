@@ -8,6 +8,6 @@ public class EnigmaTest {
 
     @Before
     public void before() {
-        enigma = new Enigma(1,2,3);
+
     }
 }
