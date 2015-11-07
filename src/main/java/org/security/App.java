@@ -1,5 +1,8 @@
 package org.security;
 
+import org.security.encrypt.Enigma;
+import org.security.encrypt.RotorInitializer;
+
 public class App {
     public static void main(String[] args) {
         RotorInitializer initializer = new RotorInitializer();

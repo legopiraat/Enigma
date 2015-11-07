@@ -1,4 +1,4 @@
-package org.security;
+package org.security.encrypt;
 
 public class Enigma {
 
@@ -28,7 +28,18 @@ public class Enigma {
         }
 
         char rotor1Key = r1.getValueByKey(key);
+        if (r1.isTurningPointHit()) {
+            r1.setTurningPointHit(false);
+            r2.increment();
+        }
+
         char rotor2Key = r2.getValueByKey(rotor1Key);
+
+        if (r2.isTurningPointHit()) {
+            r2.setTurningPointHit(false);
+            r3.increment();
+        }
+
         char rotor3Key = r3.getValueByKey(rotor2Key);
 
         char reverserKey = reverseRotor.getValueByKey(rotor3Key);

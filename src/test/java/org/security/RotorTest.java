@@ -2,6 +2,8 @@ package org.security;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.security.encrypt.Rotor;
+import org.security.encrypt.RotorInitializer;
 
 import java.util.HashMap;
 
@@ -32,5 +34,11 @@ public class RotorTest {
         }
 
         map.forEach((key, value) -> System.out.println(key + " : " + value));
+    }
+
+    @Test
+    public void wut() {
+        rotor.increment();
+        rotor.increment();
     }
 }
