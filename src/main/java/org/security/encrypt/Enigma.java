@@ -57,4 +57,10 @@ public class Enigma {
         this.r3 = r3;
         this.reverseRotor = reverseRotor;
     }
+
+    public void setRotorStartingPoints(int startR1, int startR2, int startR3) {
+        this.r1.setCurrentPosition(startR1);
+        this.r2.setCurrentPosition(startR2);
+        this.r3.setCurrentPosition(startR3);
+    }
 }

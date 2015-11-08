@@ -22,7 +22,7 @@ public class RotorTest {
 
     @Test
     public void rotor1SettingsShouldBeMatchingString() {
-        HashMap<Character, Character> map = rotor.getRotorMapping();
+        HashMap<Integer, Character> map = rotor.getRotorMapping();
 
         String expectedString = "EKMFLGDQVZNTOWYHXUSPAIBRCJ".toLowerCase();
         char[] expectedChars = expectedString.toCharArray();
