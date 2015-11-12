@@ -71,7 +71,7 @@ public class Rotor {
             turningPointHit = true;
         }
 
-        if (currentPosition == 25) {
+        if (currentPosition == 26) {
             currentPosition = 1;
         } else {
             currentPosition++;
