@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
-import java.util.Optional;
 
 public class Rotor {
 
@@ -22,7 +21,7 @@ public class Rotor {
 
     @Getter
     @Setter
-    private int currentPosition;
+    private int currentPosition = 1;
 
     public Rotor(HashMap rotorMapping, HashMap alphabet, char turningPoint) {
         this.rotorMapping = rotorMapping;
@@ -45,7 +44,7 @@ public class Rotor {
             }
         }
 
-        char key = alphabet.get(keyIndex);
+        char key = alphabet.get(keyIndex + 1);
         return key;
     }
 

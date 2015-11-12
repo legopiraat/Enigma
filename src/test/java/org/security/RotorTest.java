@@ -38,7 +38,15 @@ public class RotorTest {
 
     @Test
     public void wut() {
-        rotor.increment();
-        rotor.increment();
+        char test = 'a';
+
+        System.out.println(test);
+        test--;
+        System.out.println(test);
+        test++;
+        System.out.println(test);
+        test++;
+        System.out.println(test);
+
     }
 }
