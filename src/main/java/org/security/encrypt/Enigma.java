@@ -28,18 +28,7 @@ public class Enigma {
         }
 
         char rotor1Key = r1.getValueByKey(key);
-        if (r1.isTurningPointHit()) {
-            r1.setTurningPointHit(false);
-            r2.increment();
-        }
-
         char rotor2Key = r2.getValueByKey(rotor1Key);
-
-        if (r2.isTurningPointHit()) {
-            r2.setTurningPointHit(false);
-            r3.increment();
-        }
-
         char rotor3Key = r3.getValueByKey(rotor2Key);
 
         char reverserKey = reverseRotor.getValueByKey(rotor3Key);
@@ -47,6 +36,8 @@ public class Enigma {
         char rotor1ReverseKey = r3.getKeyByValue(reverserKey);
         char rotor2ReverseKey = r2.getKeyByValue(rotor1ReverseKey);
         char rotor3ReverseKey = r1.getKeyByValue(rotor2ReverseKey);
+
+        rotate();
 
         return rotor3ReverseKey;
     }
@@ -62,5 +53,19 @@ public class Enigma {
         this.r1.setCurrentPosition(startR1);
         this.r2.setCurrentPosition(startR2);
         this.r3.setCurrentPosition(startR3);
+    }
+
+    private void rotate() {
+        r1.increment();
+
+        if (r1.isTurningPointHit()) {
+            r1.setTurningPointHit(false);
+            r2.increment();
+        }
+
+        if (r2.isTurningPointHit()) {
+            r2.setTurningPointHit(false);
+            r3.increment();
+        }
     }
 }

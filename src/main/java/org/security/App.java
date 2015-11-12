@@ -15,7 +15,7 @@ public class App {
                 initializer.getRotorMap(901));
 
         enigma.setRotorStartingPoints(1,1,1);
-        String encrypted = enigma.pressSentence("heil hitler");
+        String encrypted = enigma.pressSentence("test");
 
         enigma.setRotorStartingPoints(1,1,1);
         String decrypted = enigma.pressSentence(encrypted);

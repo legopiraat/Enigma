@@ -35,7 +35,7 @@ public class Rotor {
 
         for (Integer key : rotorMapping.keySet()) {
             if (rotorMapping.get(key).equals(value)) {
-                keyIndex = (key + currentPosition) % 26;
+                keyIndex = (key + currentPosition - 1) % 26;
 
                 if (keyIndex == 0) {
                     keyIndex = 1;
@@ -54,7 +54,7 @@ public class Rotor {
 
         for (Integer key : alphabet.keySet()) {
             if (alphabet.get(key).equals(inputKey)) {
-                valueIndex = (key + currentPosition) % 26;
+                valueIndex = (key + currentPosition - 1) % 26;
 
                 if (valueIndex == 0) {
                     valueIndex = 1;
@@ -64,20 +64,15 @@ public class Rotor {
             }
         }
 
-        char value = rotorMapping.get(valueIndex);
-
-        increment();
-        return value;
+        return rotorMapping.get(valueIndex - 1);
     }
 
     public void increment() {
-        if (turningPoint == ' ') {
-            return;
-        } else if (alphabet.get(currentPosition).equals(turningPoint)) {
+        if (alphabet.get(currentPosition).equals(turningPoint)) {
             turningPointHit = true;
         }
 
-        if (currentPosition == 26) {
+        if (currentPosition == 25) {
             currentPosition = 1;
         } else {
             currentPosition++;
