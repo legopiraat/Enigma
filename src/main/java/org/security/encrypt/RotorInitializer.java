@@ -35,8 +35,8 @@ public class RotorInitializer {
         HashMap<Integer, Character> mapping = new HashMap<>();
         char[] charSequence = sequence.toCharArray();
 
-        for (int i = 0; i < charSequence.length; i++) {
-            mapping.put(i, charSequence[i]);
+        for (int i = 1; i <= charSequence.length; i++) {
+            mapping.put(i, charSequence[i - 1]);
         }
 
         return mapping;

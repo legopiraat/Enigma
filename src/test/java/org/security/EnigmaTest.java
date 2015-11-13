@@ -30,7 +30,7 @@ public class EnigmaTest {
                 initializer.getRotorMap(3),
                 initializer.getRotorMap(901));
 
-        enigma.setRotorStartingPoints(1,1,1);
+        enigma.setRotorStartingPoints(0,0,0);
 
         String output = enigma.pressSentence(input);
 
@@ -48,7 +48,7 @@ public class EnigmaTest {
                 initializer.getRotorMap(3),
                 initializer.getRotorMap(901));
 
-        enigma.setRotorStartingPoints(1,1,1);
+        enigma.setRotorStartingPoints(0,0,0);
 
         String output = enigma.pressSentence(input);
 

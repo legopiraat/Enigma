@@ -14,10 +14,10 @@ public class App {
                 initializer.getRotorMap(3),
                 initializer.getRotorMap(901));
 
-        enigma.setRotorStartingPoints(1,1,1);
+        enigma.setRotorStartingPoints(0,0,0);
         String encrypted = enigma.pressSentence("test");
 
-        enigma.setRotorStartingPoints(1,1,1);
+        enigma.setRotorStartingPoints(0,0,0);
         String decrypted = enigma.pressSentence(encrypted);
 
         System.out.println(encrypted);

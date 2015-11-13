@@ -48,5 +48,9 @@ public class RotorTest {
         test++;
         System.out.println(test);
 
+        int currentPosition = 15;
+
+        System.out.println((15 + currentPosition) % 26);
+
     }
 }

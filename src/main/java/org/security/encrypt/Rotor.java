@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 public class Rotor {
 
@@ -13,7 +14,7 @@ public class Rotor {
     private HashMap<Integer, Character> alphabet;
 
     @Getter
-    private char turningPoint;
+    private int turningPoint;
 
     @Getter
     @Setter
@@ -21,20 +22,26 @@ public class Rotor {
 
     @Getter
     @Setter
-    private int currentPosition = 1;
+    private int currentPosition = 0;
 
-    public Rotor(HashMap rotorMapping, HashMap alphabet, char turningPoint) {
+    public Rotor(HashMap<Integer, Character> rotorMapping, HashMap<Integer, Character> alphabet, char turningPoint) {
         this.rotorMapping = rotorMapping;
         this.alphabet = alphabet;
-        this.turningPoint = turningPoint;
+        convertTurningPointToIndex(turningPoint);
     }
 
-    public char getKeyByValue(char value) {
+    private void convertTurningPointToIndex(char charTurningPoint) {
+        alphabet.keySet().stream()
+                .filter(key -> alphabet.get(key).equals(charTurningPoint))
+                .forEach(key -> turningPoint = key);
+    }
+
+    public char getKeyByValue(char inputValue) {
         int keyIndex = 0;
 
         for (Integer key : rotorMapping.keySet()) {
-            if (rotorMapping.get(key).equals(value)) {
-                keyIndex = (key + currentPosition - 1) % 26;
+            if (rotorMapping.get(key).equals(inputValue)) {
+                keyIndex = (key + currentPosition) % 26;
 
                 if (keyIndex == 0) {
                     keyIndex = 1;
@@ -44,8 +51,7 @@ public class Rotor {
             }
         }
 
-        char key = alphabet.get(keyIndex + 1);
-        return key;
+        return alphabet.get(keyIndex);
     }
 
     public char getValueByKey(char inputKey) {
@@ -53,28 +59,23 @@ public class Rotor {
 
         for (Integer key : alphabet.keySet()) {
             if (alphabet.get(key).equals(inputKey)) {
-                valueIndex = (key + currentPosition - 1) % 26;
+                valueIndex = (key + currentPosition) % 26;
 
                 if (valueIndex == 0) {
                     valueIndex = 1;
                 }
-
                 break;
             }
         }
 
-        return rotorMapping.get(valueIndex - 1);
+        return rotorMapping.get(valueIndex);
     }
 
     public void increment() {
-        if (alphabet.get(currentPosition).equals(turningPoint)) {
+        if (currentPosition == turningPoint) {
             turningPointHit = true;
         }
 
-        if (currentPosition == 26) {
-            currentPosition = 1;
-        } else {
-            currentPosition++;
-        }
+        currentPosition++;
     }
 }
